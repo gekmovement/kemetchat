@@ -9,6 +9,7 @@ import 'package:fluffychat/widgets/layouts/login_scaffold.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../config/themes.dart';
 import '../../widgets/mxc_image.dart';
+import 'homeserver_app_bar.dart';
 import 'homeserver_picker.dart';
 
 class HomeserverPickerView extends StatelessWidget {
@@ -18,6 +19,8 @@ class HomeserverPickerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final identityProviders = controller.identityProviders;
     final errorText = controller.error;
     final publicHomeserver = controller.cachedHomeservers?.singleWhereOrNull(
@@ -28,12 +31,12 @@ class HomeserverPickerView extends StatelessWidget {
     final regLink = publicHomeserver?.regLink;
     return LoginScaffold(
       enforceMobileMode: Matrix.of(context).client.isLogged(),
-      // appBar: AppBar(
-      //   titleSpacing: 12,
-      //   automaticallyImplyLeading: false,
-      //   surfaceTintColor: Theme.of(context).colorScheme.background,
-      //   title: HomeserverAppBar(controller: controller),
-      // ),
+      appBar: AppBar(
+        titleSpacing: 12,
+        automaticallyImplyLeading: false,
+        surfaceTintColor: theme.colorScheme.surface,
+        title: HomeserverAppBar(controller: controller),
+      ),
       body: Column(
         children: [
           // display a prominent banner to import session for TOR browser
@@ -49,7 +52,7 @@ class HomeserverPickerView extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               borderRadius:
                   const BorderRadius.vertical(bottom: Radius.circular(8)),
-              color: Theme.of(context).colorScheme.surface,
+              color: theme.colorScheme.surface,
               child: ListTile(
                 leading: const Icon(Icons.vpn_key),
                 title: Text(L10n.of(context)!.hydrateTor),
@@ -79,7 +82,7 @@ class HomeserverPickerView extends StatelessWidget {
                             errorText,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
+                              color: theme.colorScheme.error,
                               fontSize: 18,
                             ),
                           ),
@@ -90,7 +93,7 @@ class HomeserverPickerView extends StatelessWidget {
                                 .pleaseTryAgainLaterOrChooseDifferentServer,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              color: Theme.of(context).colorScheme.error,
+                              color: theme.colorScheme.error,
                               fontSize: 12,
                             ),
                           ),
@@ -99,13 +102,13 @@ class HomeserverPickerView extends StatelessWidget {
                       ] else
                         Padding(
                           padding: const EdgeInsets.only(
-                            top: 8.0,
+                            top: 0.0,
                             right: 8.0,
                             left: 8.0,
-                            bottom: 8.0,
+                            bottom: 16.0,
                           ),
                           child: Image.asset(
-                            'assets/landing_page_unauth.jpeg',
+                            'assets/banner_transparent.png',
                           ),
                         ),
                       if (identityProviders != null) ...[
@@ -188,6 +191,8 @@ class _LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     final icon = this.icon;
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -200,16 +205,15 @@ class _LoginButton extends StatelessWidget {
             side: FluffyThemes.isColumnMode(context)
                 ? BorderSide.none
                 : BorderSide(
-                    color: Theme.of(context).colorScheme.outlineVariant,
+                    color: theme.colorScheme.outlineVariant,
                     width: 1,
                   ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(99),
             ),
-            foregroundColor: Theme.of(context).colorScheme.onBackground,
-            backgroundColor: withBorder
-                ? Theme.of(context).colorScheme.background
-                : Colors.transparent,
+            foregroundColor: theme.colorScheme.onSurface,
+            backgroundColor:
+                withBorder ? theme.colorScheme.surface : Colors.transparent,
           ),
           onPressed: onPressed,
           label: Text(label),
