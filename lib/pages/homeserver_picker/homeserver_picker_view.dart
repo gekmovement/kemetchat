@@ -31,12 +31,12 @@ class HomeserverPickerView extends StatelessWidget {
     final regLink = publicHomeserver?.regLink;
     return LoginScaffold(
       enforceMobileMode: Matrix.of(context).client.isLogged(),
-      appBar: AppBar(
-        titleSpacing: 12,
-        automaticallyImplyLeading: false,
-        surfaceTintColor: theme.colorScheme.surface,
-        title: HomeserverAppBar(controller: controller),
-      ),
+      // appBar: AppBar(
+      //   titleSpacing: 12,
+      //   automaticallyImplyLeading: false,
+      //   surfaceTintColor: theme.colorScheme.surface,
+      //   title: HomeserverAppBar(controller: controller),
+      // ),
       body: Column(
         children: [
           // display a prominent banner to import session for TOR browser

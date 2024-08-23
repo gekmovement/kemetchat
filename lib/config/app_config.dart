@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:matrix/matrix.dart';
 
 abstract class AppConfig {
-  static String _applicationName = 'FluffyChat';
+  static String _applicationName = 'KemetChat';
   static String get applicationName => _applicationName;
   static String? _applicationWelcomeMessage;
   static String? get applicationWelcomeMessage => _applicationWelcomeMessage;
-  static String _defaultHomeserver = 'matrix.org';
+  static String _defaultHomeserver = 'matrix.gekmovement.org';
   static String get defaultHomeserver => _defaultHomeserver;
   static double fontSizeFactor = 1;
   static const Color chatColor = primaryColor;
@@ -19,7 +19,7 @@ abstract class AppConfig {
   static const Color primaryColorLight = Color(0xFFCCBDEA);
   static const Color secondaryColor = Color(0xFF41a2bc);
   static String _privacyUrl =
-      'https://github.com/krille-chan/fluffychat/blob/main/PRIVACY.md';
+      'https://github.com/gekmovement/kemetchat/blob/main/README.md';
   static String get privacyUrl => _privacyUrl;
   static const String enablePushTutorial =
       'https://github.com/krille-chan/fluffychat/wiki/Push-Notifications-without-Google-Services';
@@ -28,13 +28,13 @@ abstract class AppConfig {
   static const String startChatTutorial =
       'https://github.com/krille-chan/fluffychat/wiki/How-to-Find-Users-in-FluffyChat';
   static const String appId = 'im.fluffychat.FluffyChat';
-  static const String appOpenUrlScheme = 'im.fluffychat';
+  static const String appOpenUrlScheme = 'im.kemetchat';
   static String _webBaseUrl = 'https://fluffychat.im/web';
   static String get webBaseUrl => _webBaseUrl;
   static const String sourceCodeUrl =
-      'https://github.com/krille-chan/fluffychat';
+      'https://github.com/gekmovement/kemetchat';
   static const String supportUrl =
-      'https://github.com/krille-chan/fluffychat/issues';
+      'https://github.com/gekmovement/kemetchat/support';
   static const String changelogUrl =
       'https://github.com/krille-chan/fluffychat/blob/main/CHANGELOG.md';
   static final Uri newIssueUrl = Uri(
